@@ -29,6 +29,9 @@
         <activity
             android:name=".MapsActivity"
             android:label="Map" />
+        <activity
+            android:name=".FavoriteActivity"
+            android:label="Favorite" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

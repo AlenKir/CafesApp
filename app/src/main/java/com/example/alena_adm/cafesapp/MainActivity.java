@@ -39,6 +39,11 @@ public class MainActivity extends AppCompatActivity {
             Intent intObj = new Intent(this, FavoriteActivity.class);
             startActivity(intObj);
         }
+        else if (id == R.id.show_all_item)
+        {
+            Intent intObj = new Intent(this, ShowAllActivity.class);
+            startActivity(intObj);
+        }
 
         return super.onOptionsItemSelected(item);
     }

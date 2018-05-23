@@ -6,15 +6,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 /**
  * Created by Alena_Adm on 22.05.2018.
  */
 
-public class ShowAllActivity extends ListActivity {
+public class ShowAllActivity extends AppCompatActivity {
 
-    String[] countries = { "Бразилия", "Аргентина", "Колумбия", "Чили", "Уругвай"};
+    String[] cafes = { "Cafe1", "Vegbox"};
+    ListView showAll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +24,13 @@ public class ShowAllActivity extends ListActivity {
 
         setContentView(R.layout.activity_showall);
 
+        showAll = findViewById(R.id.list);
+
         // создаем адаптер
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, countries);
-        setListAdapter(adapter);
+                android.R.layout.simple_list_item_1, cafes);
+        //setListAdapter(adapter);
+        showAll.setAdapter(adapter);
 
         AdapterView.OnItemClickListener itemListener = new AdapterView.OnItemClickListener() {
             @Override
@@ -35,6 +40,5 @@ public class ShowAllActivity extends ListActivity {
                         parent.getItemAtPosition(position).toString(),  Toast.LENGTH_SHORT).show();
             }
         };
-        getListView().setOnItemClickListener(itemListener);
     }
 }

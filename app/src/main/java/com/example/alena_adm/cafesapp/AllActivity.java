@@ -58,15 +58,49 @@ public class AllActivity extends ListActivity {
         setListAdapter(mAdapter);
     }
 
+    public int getLastId() {
+        int id = 0;
+        final String MY_QUERY = "SELECT MAX(_id) AS _id FROM cafes";
+        Cursor mCursor = mDb.rawQuery(MY_QUERY, null);
+        try {
+            if (mCursor.getCount() > 0) {
+                mCursor.moveToFirst();
+                id = mCursor.getInt(0);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return id;
+    }
+
+    int findIdByName(String name)
+    {
+        Cursor cursor = mDb.rawQuery("SELECT * FROM cafes", null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            if (name.equals(cursor.getString(1))) {
+                return cursor.getInt(0);
+            }
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return 0;
+    }
+
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         //номер пункта
        // Toast.makeText(getApplicationContext(),
               //  "Вы выбрали " + (position + 1) + " элемент", Toast.LENGTH_SHORT).show();
+        String name = l.getItemAtPosition(position).toString();
+
         Toast.makeText(getApplicationContext(),
-                "You chose " + l.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();
+                "You chose " + name, Toast.LENGTH_SHORT).show();
+
+        int id_ = findIdByName(name);
+
         Intent intObj = new Intent(this, EditActivity.class);
-        intObj.putExtra("id", position + 1);
+        intObj.putExtra("id", id_);
         startActivity(intObj);
     }
 }

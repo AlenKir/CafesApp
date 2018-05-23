@@ -55,7 +55,7 @@ public class ExampleActivity extends AppCompatActivity {
                 Cursor cursor = mDb.rawQuery("SELECT * FROM cafes", null);
                 cursor.moveToFirst();
                 while (!cursor.isAfterLast()) {
-                    product += cursor.getString(1) + " | ";
+                    product += cursor.getString(1) + " " + cursor.getInt(0) + " | ";
                     cursor.moveToNext();
                 }
                 cursor.close();

@@ -26,6 +26,7 @@ public class EditActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
 
@@ -46,6 +47,7 @@ public class EditActivity extends Activity {
         int cafe_id = 0;
 
         Bundle extras = getIntent().getExtras();
+
         if (extras != null) {
             cafe_id = extras.getInt("id");
         }
@@ -100,15 +102,40 @@ public class EditActivity extends Activity {
                 "WHERE [condition];";
         q = "update cafes set name = '" + name +"', note = '"
                 + note + "', address = '" + address + "'" +
-                ", rating = " + rating + " where _id=" + cafe_id;
+                ", rating = " + rating + " where _id=" + cafe_id + ";";
 
-
-
-      try {
+        try {
             cursor = mDb.rawQuery(q, null);
             mDb.execSQL(q);
             Toast.makeText(getApplicationContext(),
                     "You edited " + name, Toast.LENGTH_SHORT).show();
+        }
+        catch (Exception e)
+        {
+            Toast.makeText(getApplicationContext(),
+                    "Sorry, something went wrong.", Toast.LENGTH_SHORT).show();
+        }
+
+        Intent intObj = new Intent(this, MainActivity.class);
+        startActivity(intObj);
+    }
+
+    public void onClickDelete(View view) {
+        int cafe_id = 0;
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            cafe_id = extras.getInt("id");
+        }
+        String q = "DELETE FROM table_name\n" +
+                "WHERE [condition];";
+        q = "delete from cafes where _id=" + cafe_id + ";";
+        try {
+            //cursor = mDb.rawQuery(q, null);
+            //mDb.execSQL(q);
+            mDb.delete("cafes", "_id = ?", new String[]{String.valueOf(cafe_id)});
+            Toast.makeText(getApplicationContext(),
+                    "Deleted.", Toast.LENGTH_SHORT).show();
         }
         catch (Exception e)
         {

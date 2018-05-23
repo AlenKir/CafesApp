@@ -48,4 +48,17 @@
             />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="bottom|center">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="edit"
+            android:onClick="onClickToEdit"
+            />
+    </LinearLayout>
+
 </android.support.design.widget.CoordinatorLayout>

@@ -35,6 +35,9 @@
         <activity
             android:name=".ShowAllActivity"
             android:label="ShowAll" />
+        <activity
+            android:name=".EditActivity"
+            android:label="Edit" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

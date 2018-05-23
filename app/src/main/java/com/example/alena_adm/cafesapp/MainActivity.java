@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intObj);
         }
 
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 
    public void onClickToMaps(View v) {
@@ -55,6 +55,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickToAdd(View v) {
         Intent intObj = new Intent(this, AddActivity.class);
+        startActivity(intObj);
+    }
+
+    public void onClickToEdit(View v) {
+        Intent intObj = new Intent(this, EditActivity.class);
         startActivity(intObj);
     }
 }

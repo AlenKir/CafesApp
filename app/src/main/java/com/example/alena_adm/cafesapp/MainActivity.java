@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else if (id == R.id.show_all_item)
         {
-            Intent intObj = new Intent(this, ShowAllActivity.class);
+            Intent intObj = new Intent(this, AllActivity.class);
             startActivity(intObj);
         }
 

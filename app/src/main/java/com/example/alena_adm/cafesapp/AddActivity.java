@@ -50,7 +50,7 @@ public class AddActivity extends Activity {
         if (name.equals(""))
             return;
         RatingBar r = (RatingBar) findViewById(R.id.add_rating);
-        Integer rating = r.getNumStars();
+        Integer rating = Math.round(r.getRating());
         view = (TextView) findViewById(R.id.add_note);
         String note = view.getText().toString();
         view = (TextView) findViewById(R.id.add_address);
@@ -63,6 +63,7 @@ public class AddActivity extends Activity {
 
         try {
             Cursor cursor = mDb.rawQuery(q, null);
+            mDb.execSQL(q);
             Toast.makeText(getApplicationContext(),
                     "You added " + name, Toast.LENGTH_SHORT).show();
         }

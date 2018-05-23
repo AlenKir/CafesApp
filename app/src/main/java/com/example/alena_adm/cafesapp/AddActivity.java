@@ -2,6 +2,7 @@ package com.example.alena_adm.cafesapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.drm.DrmStore;
@@ -59,8 +60,9 @@ public class AddActivity extends Activity {
                 "VALUES (value1, value2, value3,...valueN);";
         q = "insert into cafes (name, rating, note, address) values " +
                 "('" + name + "', " + rating + ", '" + note + "', '" + address + "');";
+
         try {
-            mDb.execSQL(q);
+            Cursor cursor = mDb.rawQuery(q, null);
             Toast.makeText(getApplicationContext(),
                     "You added " + name, Toast.LENGTH_SHORT).show();
         }

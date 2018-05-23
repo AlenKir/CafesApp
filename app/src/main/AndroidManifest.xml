@@ -33,9 +33,6 @@
             android:name=".FavoriteActivity"
             android:label="Favorite" />
         <activity
-            android:name=".ShowAllActivity"
-            android:label="ShowAll" />
-        <activity
             android:name=".EditActivity"
             android:label="Edit" />
         <activity

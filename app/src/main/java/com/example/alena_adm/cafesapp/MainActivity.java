@@ -57,9 +57,4 @@ public class MainActivity extends AppCompatActivity {
         Intent intObj = new Intent(this, AddActivity.class);
         startActivity(intObj);
     }
-
-    public void onClickToEdit(View v) {
-        Intent intObj = new Intent(this, EditActivity.class);
-        startActivity(intObj);
-    }
 }

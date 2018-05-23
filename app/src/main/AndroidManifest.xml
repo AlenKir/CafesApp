@@ -38,6 +38,9 @@
         <activity
             android:name=".AllActivity"
             android:label="All" />
+        <activity
+            android:name=".ExampleActivity"
+            android:label="Example" />
 
 
         <meta-data

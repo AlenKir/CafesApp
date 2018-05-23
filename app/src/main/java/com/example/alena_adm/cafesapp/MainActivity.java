@@ -57,4 +57,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intObj = new Intent(this, AddActivity.class);
         startActivity(intObj);
     }
+
+    public void onClickToExample(View view) {
+        Intent intObj = new Intent(this, ExampleActivity.class);
+        startActivity(intObj);
+    }
 }

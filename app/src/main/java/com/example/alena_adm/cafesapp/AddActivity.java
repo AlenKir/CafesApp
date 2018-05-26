@@ -136,8 +136,7 @@ public class AddActivity extends Activity {
                     mImageView.setImageBitmap(thumbnailBitmap);
                 }
             } else {
-                // Какие-то действия с полноценным изображением,
-                // сохраненным по адресу mOutputFileUri
+                // TO DO later
                 mImageView.setImageURI(mOutputFileUri);
             }
         }

@@ -49,7 +49,7 @@ public class AddActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
 
-        mImageView = findViewById(R.id.add_imageview);
+       // mImageView = findViewById(R.id.add_imageview);
 
         mDBHelper = new DatabaseHelper(this);
 
@@ -99,7 +99,7 @@ public class AddActivity extends Activity {
         startActivity(intObj);
     }
 
-    public void onClickCamera(View view) throws IOException {
+/*    public void onClickCamera(View view) throws IOException {
         saveFullImage();
     }
 
@@ -110,9 +110,9 @@ public class AddActivity extends Activity {
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File image = File.createTempFile(
                 imageFileName,  /* prefix */
-                ".jpg",         /* suffix */
-                storageDir      /* directory */
-        );
+               // ".jpg",         /* suffix */
+                //storageDir      /* directory */
+     /*   );
 
         // Save a file: path for use with ACTION_VIEW intents
         mCurrentPhotoPath = image.getAbsolutePath();
@@ -141,5 +141,5 @@ public class AddActivity extends Activity {
             }
         }
     }
-
+*/
 }

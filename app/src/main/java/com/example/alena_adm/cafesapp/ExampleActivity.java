@@ -6,61 +6,17 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.IOException;
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by Alena_Adm on 23.05.2018.
  */
 
 public class ExampleActivity extends AppCompatActivity {
-
-    Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("http://localhost:8080/show")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build();
-
-    CafeService service = retrofit.create(CafeService.class);
-
-    String res;
-
-    Call<List<Cafe>> call;
-
-    /*call.enqueue(new Callback<List<Cafe>>() {
-        @Override
-        public void onResponse(Call<List<Cafe>> call, Response<List<Cafe>> response) {
-            String name, note, address;
-            int rating;
-            for (int i = 0; i < response.body().size(); i++) {
-                name = response.body().get(i).getName();
-                note = response.body().get(i).getNote();
-                address = response.body().get(i).getAddress();
-            }
-            res = response.body().toString();
-            Toast.makeText(getApplicationContext(),
-                    "GET failed!", Toast.LENGTH_SHORT).show();
-        }
-
-        @Override
-        public void onFailure(Call<List<Cafe>> call, Throwable t) {
-            Toast.makeText(getApplicationContext(),
-                    "GET failed!", Toast.LENGTH_SHORT).show();
-        }
-    });
-*/
-
 
     Button button;
     TextView textView;
@@ -96,14 +52,13 @@ public class ExampleActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String product = "";
 
-                /*Cursor cursor = mDb.rawQuery("SELECT * FROM cafes", null);
+                Cursor cursor = mDb.rawQuery("SELECT * FROM cafes", null);
                 cursor.moveToFirst();
                 while (!cursor.isAfterLast()) {
                     product += cursor.getString(1) + " " + cursor.getInt(0) + " | ";
                     cursor.moveToNext();
                 }
-                cursor.close();*/
-                product = service.listRepos().toString();
+                cursor.close();
 
                 textView.setText(product);
             }

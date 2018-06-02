@@ -2,4 +2,6 @@
     <string name="app_name">CafesApp</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_maps">Map</string>
+    <string name="label_cafe_id">Cafe Id</string>
+    <string name="label_cafe_name">Cafe Name</string>
 </resources>

@@ -9,57 +9,61 @@ import com.google.gson.annotations.SerializedName;
 
 public class Cafe {
 
-    @SerializedName("name")
+    @SerializedName("cafe_name")
     @Expose
-    public String name;
-    @SerializedName("note")
-    @Expose
-    public String note;
-    @SerializedName("address")
-    @Expose
-    public String address;
-    @SerializedName("rating")
-    @Expose
-    public int rating;
-    @SerializedName("id")
-    @Expose
-    public int id;
+    public String cafe_name;
 
-    public Cafe(String name, int id, String note, String address, int rating) {
-        this.name = name;
-        this.id = id;
-        this.address = address;
-        this.rating = rating;
-        this.note = note;
+    @SerializedName("cafe_note")
+    @Expose
+    public String cafe_note;
+
+    @SerializedName("cafe_address")
+    @Expose
+    public String cafe_address;
+
+    @SerializedName("cafe_rating")
+    @Expose
+    public int cafe_rating;
+
+    @SerializedName("cafe_id")
+    @Expose
+    public int cafe_id;
+
+    public Cafe(int cafe_id, String cafe_name, String cafe_note, String cafe_address, int cafe_rating) {
+        this.cafe_name = cafe_name;
+        this.cafe_id = cafe_id;
+        this.cafe_address = cafe_address;
+        this.cafe_rating = cafe_rating;
+        this.cafe_note = cafe_note;
     }
 
     public String getNote() {
-        return this.note;
+        return this.cafe_note;
     }
 
     public String getAddress() {
-        return this.address;
+        return this.cafe_address;
     }
 
     public int getRating() {
-        return this.rating;
+        return this.cafe_rating;
     }
 
     public String getName() {
-        return this.name;
+        return this.cafe_name;
     }
 
     public int getId() {
-        return this.id;
+        return this.cafe_id;
     }
 
     @Override
     public String toString() {
         return "Cafe{" +
-                "name='" + name + '\'' +
-                ", note='" + note + '\'' +
-                ", address='" + address + '\'' +
-                ", rating=" + rating +
+                "cafe_name='" + cafe_name + '\'' +
+                ", cafe_note='" + cafe_note + '\'' +
+                ", cafe_address='" + cafe_address + '\'' +
+                ", cafe_rating=" + cafe_rating +
                 '}';
     }
 }

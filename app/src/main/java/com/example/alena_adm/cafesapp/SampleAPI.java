@@ -29,6 +29,9 @@ public interface SampleAPI {
     @GET("/search/{name}")
     Call<Cafe> getCafe(@Path("name") String name);
 
+    @GET("/update")
+    Call<List<Cafe>> getUpdate();
+
     class Factory {
         private static SampleAPI service;
 

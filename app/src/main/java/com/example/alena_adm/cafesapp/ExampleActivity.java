@@ -28,6 +28,7 @@ public class ExampleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_example);
         ButterKnife.bind(this);
     }
+
     public void onClickGet(View view) {
 
         EditText editText = (EditText) findViewById(R.id.get_clicked);
@@ -65,4 +66,38 @@ public class ExampleActivity extends AppCompatActivity {
         });
     }
 
+    public void onClickUpdate(View view) {
+        EditText editText = (EditText) findViewById(R.id.get_clicked);
+        editText.setText("Button Update Clicked.");
+        mContext = ExampleActivity.this;
+        sampleAPI = SampleAPI.Factory.getIstance(mContext);
+        textView = (TextView) findViewById(R.id.update_textview);
+        sampleAPI.getUpdate().enqueue(new Callback<List<Cafe>>() {
+            @Override
+            public void onResponse(Call<List<Cafe>> call, Response<List<Cafe>> response) {
+                EditText editText2 = (EditText) findViewById(R.id.get_on);
+                editText2.setText("on response update");
+                if (response.isSuccessful())
+                {
+                    EditText editText3 = (EditText) findViewById(R.id.get_success);
+                    editText3.setText("inside of update success");
+                    List<Cafe> cafeList = response.body();
+                    /*Toast.makeText(getApplicationContext(),
+                            "It should be " + response.body().toString(), Toast.LENGTH_SHORT).show();*/
+                    textView.setText(cafeList.toString());
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),
+                            "Oooops, GET.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Cafe>> call, Throwable t) {
+                EditText editText2 = (EditText) findViewById(R.id.get_on);
+                editText2.setText("on failure");
+            }
+        });
+    }
 }

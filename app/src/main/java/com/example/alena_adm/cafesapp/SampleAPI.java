@@ -32,6 +32,9 @@ public interface SampleAPI {
     @GET("/update")
     Call<List<Cafe>> getUpdate();
 
+    @GET("/allupdated")
+    Call<List<Cafe>> update();
+
     class Factory {
         private static SampleAPI service;
 

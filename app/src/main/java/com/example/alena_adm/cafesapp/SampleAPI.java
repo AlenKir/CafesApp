@@ -11,7 +11,10 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 /**
@@ -32,8 +35,13 @@ public interface SampleAPI {
     @GET("/update")
     Call<List<Cafe>> getUpdate();
 
-    @GET("/allupdated")
+    @GET("/cafe_addfromandroid")
     Call<List<Cafe>> update();
+
+    @FormUrlEncoded
+    @POST("/from_android")
+    Call<Object> addCafe(@Field("cafe_name") String name, @Field("cafe_note") String note,
+                       @Field("cafe_address") String address, @Field("cafe_rating") int rating);
 
     class Factory {
         private static SampleAPI service;

@@ -1,6 +1,7 @@
 package com.example.alena_adm.cafesapp;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -14,6 +15,7 @@ import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -23,6 +25,11 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by Alena_Adm on 22.05.2018.
@@ -33,6 +40,9 @@ public class AddActivity extends Activity {
     //dbase
     private DatabaseHelper mDBHelper;
     private SQLiteDatabase mDb;
+
+    SampleAPI sampleAPI;
+    Context mContext;
 
     //camera
     private final int CAMERA_RESULT = 0;
@@ -94,6 +104,30 @@ public class AddActivity extends Activity {
             Toast.makeText(getApplicationContext(),
                     "Sorry, something went wrong.", Toast.LENGTH_SHORT).show();
         }
+
+        mContext = AddActivity.this;
+        sampleAPI = SampleAPI.Factory.getIstance(mContext);
+        sampleAPI.addCafe(name, note, address, rating).enqueue(new Callback<Object>() {
+            @Override
+            public void onResponse(Call<Object> call, Response<Object> response) {
+                if (response.isSuccessful())
+                {
+                    Toast.makeText(getApplicationContext(),
+                            "It should be added.", Toast.LENGTH_SHORT).show();
+
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),
+                            "Oooops.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Object> call, Throwable t) {
+            }
+        });
+
 
         Intent intObj = new Intent(this, MainActivity.class);
         startActivity(intObj);

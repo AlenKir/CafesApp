@@ -23,7 +23,7 @@ import retrofit2.http.Path;
 
 public interface SampleAPI {
 
-    String BASE_URL = "http://192.168.1.102:8080";
+    String BASE_URL = "http://192.168.43.130:8080";
 
     //@GET("your_endpoint") Call<YOUR_POJO> getWeather(@Query("from") String from);
     @GET("/cafes")

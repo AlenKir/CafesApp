@@ -20,4 +20,10 @@
         android:title="All"
         app:showAsAction="always"
         android:icon="@android:drawable/arrow_down_float"/>
+
+    <item
+        android:id="@+id/help"
+        android:title="Help"
+        app:showAsAction="never"
+        android:onClick="onClickHelp"/>
 </menu>

@@ -80,4 +80,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intObj = new Intent(this, ExampleActivity.class);
         startActivity(intObj);
     }
+
+    public void onClickHelp(MenuItem item) {
+        Intent intObj = new Intent(this, HelpActivity.class);
+        startActivity(intObj);
+    }
 }

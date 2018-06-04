@@ -133,47 +133,5 @@ public class AddActivity extends Activity {
         startActivity(intObj);
     }
 
-/*    public void onClickCamera(View view) throws IOException {
-        saveFullImage();
-    }
 
-    private File createImageFile() throws IOException {
-        // Create an image file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
-        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(
-                imageFileName,  /* prefix */
-               // ".jpg",         /* suffix */
-                //storageDir      /* directory */
-     /*   );
-
-        // Save a file: path for use with ACTION_VIEW intents
-        mCurrentPhotoPath = image.getAbsolutePath();
-        return image;
-    }
-
-    private void saveFullImage() throws IOException {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        File file = createImageFile();
-        mOutputFileUri = Uri.fromFile(file);
-        takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, mOutputFileUri);
-        startActivityForResult(takePictureIntent, TAKE_PICTURE);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == TAKE_PICTURE) {
-            if (data != null) {
-                if (data.hasExtra("data")) {
-                    Bitmap thumbnailBitmap = data.getParcelableExtra("data");
-                    mImageView.setImageBitmap(thumbnailBitmap);
-                }
-            } else {
-                // TO DO later
-                mImageView.setImageURI(mOutputFileUri);
-            }
-        }
-    }
-*/
 }
